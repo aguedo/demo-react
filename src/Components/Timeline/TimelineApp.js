@@ -164,3 +164,30 @@ function NavigationBar({ timelineIndex, setTimelineIndex }) {
     );
 }
 
+export default function TimelineApp() {
+    const [timelineIndex, setTimelineIndex] = useState(0);
+    return (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+            <div className="flex justify-center mb-6">
+                <img className="max-w-40" src="/lablens/logo.svg" alt="Logo" />
+            </div>
+            <div>
+                <p className="text-gray-500 mb-8 text-center">
+                    Molecular vs Micriobiology or other traditional results
+                </p>
+            </div>
+            <div className="mb-4">
+                <PCRStepper timelineIndex={timelineIndex} />
+            </div>
+            <div className="mb-4">
+                <OtherStepper timelineIndex={timelineIndex} />
+            </div>
+            <div className="mb-4">
+                <StepperContent timelineIndex={timelineIndex} />
+            </div>
+            <div>
+                <NavigationBar timelineIndex={timelineIndex} setTimelineIndex={setTimelineIndex} />
+            </div>
+        </div>
+    );
+}

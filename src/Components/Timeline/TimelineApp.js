@@ -28,3 +28,32 @@ function Step({ index, title, stepText, timelineIndex }) {
             <div className={classNames("w-full h-px flex-1 group-last:hidden", isCompleted ? "bg-blue-600" : "bg-gray-200")}></div>
         </li>);
 }
+
+function PCRStepper({ timelineIndex }) {
+    return (
+        <div className="">
+            <ul className="min-h-10 relative flex flex-row gap-x-2">
+                <Step index={0} title={"Molecular Collected"} stepText={"1"} timelineIndex={timelineIndex} />
+                <Step index={1} title={"Received"} stepText={"2"} timelineIndex={timelineIndex} />
+                <Step index={2} title={"Resulted"} stepText={"3"} timelineIndex={timelineIndex} />
+                <Step index={3} title={"Done"} stepText={"-"} timelineIndex={timelineIndex} />
+                <Step index={4} title={"Done"} stepText={"-"} timelineIndex={timelineIndex} />
+            </ul>
+        </div>
+    );
+}
+
+function OtherStepper({ timelineIndex }) {
+    return (
+        <div>
+            <ul className="min-h-10 relative flex flex-row gap-x-2">
+                <Step index={0} title={"Other Collected"} stepText={"1"} timelineIndex={timelineIndex} />
+                <Step index={1} title={"Received"} stepText={"2"} timelineIndex={timelineIndex} />
+                <Step index={2} title={"In Progress"} stepText={"3"} timelineIndex={timelineIndex} />
+                <Step index={3} title={"24 Hours"} stepText={"4"} timelineIndex={timelineIndex} />
+                <Step index={4} title={"48 Hours+"} stepText={"5"} timelineIndex={timelineIndex} />
+            </ul>
+        </div>
+    );
+}
+

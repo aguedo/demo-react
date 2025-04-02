@@ -106,3 +106,61 @@ function StepperContent({ timelineIndex }) {
     );
 }
 
+function NavigationBar({ timelineIndex, setTimelineIndex }) {
+    const [isPlaying, setIsPlaying] = useState(true);
+    const [speed, setSpeed] = useState(5000);
+    const intervalRef = useRef(null);
+
+    useEffect(() => {
+        if (isPlaying) {
+            intervalRef.current = setInterval(() =>
+                setTimelineIndex(prevCount => prevCount + 1),
+                speed);
+        }
+
+        return () => clearInterval(intervalRef.current);
+    }, [isPlaying, setTimelineIndex, speed]);
+
+    const toggleRunning = () => {
+        setIsPlaying(prev => !prev);
+    };
+
+    const handleSpeedChange = (event) => {
+        setSpeed(event.target.value);
+    };
+
+    return (
+        <div className="mt-5 flex justify-center gap-x-2">
+            <button type="button" onClick={() => setTimelineIndex(prev => prev - 1)}
+                className="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+                <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                Back
+            </button>
+            <button type="button" onClick={() => toggleRunning()} className="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+                {isPlaying ?
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+                    </svg> :
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                    </svg>
+                }
+            </button>
+            <button type="button" onClick={() => setTimelineIndex(prev => prev + 1)}
+                className="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+                Next
+                <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m9 18 6-6-6-6"></path>
+                </svg>
+            </button>
+            <select className="py-3 px-4" value={speed} onChange={handleSpeedChange}>
+                <option value="10000">Slow</option>
+                <option value="5000" selected>Normal</option>
+                <option value="2000">Fast</option>
+            </select>
+        </div>
+    );
+}
+

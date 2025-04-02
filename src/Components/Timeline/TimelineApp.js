@@ -57,3 +57,52 @@ function OtherStepper({ timelineIndex }) {
     );
 }
 
+function StepperContent({ timelineIndex }) {
+    const modIndex = ((timelineIndex % stepCount) + stepCount) % stepCount;
+    return (
+        < div className="mt-5 sm:mt-8" >
+            <div>
+                <div className={classNames("p-4 h-48 bg-gray-900 flex justify-center items-center border border-gray-200 rounded-xl bg-[url('./assets/lablens/content-bg-1.png')] bg-contain bg-right bg-no-repeat",
+                    modIndex === 0 ? "animate-fadeIn" : "hidden")}>
+                    <p className="text-gray-100 text-2xl">
+                        The samples are collected and sent to the lab for testing.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <div className={classNames("p-4 h-48 bg-gray-50 flex justify-center items-center border border-gray-200 rounded-xl bg-[url('./assets/lablens/content-bg-1.png')] bg-contain bg-right bg-no-repeat",
+                    modIndex === 1 ? "animate-fadeIn" : "hidden")}>
+                    <p className="text-gray-600 text-2xl">
+                        The lab receives the samples and begins processing them.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <div className={classNames("p-4 h-48 bg-white flex justify-center items-center border border-gray-200 rounded-xl bg-[url('./assets/lablens/content-bg-2.png')] bg-contain bg-right bg-no-repeat",
+                    modIndex === 2 ? "animate-fadeIn" : "hidden")}>
+                    <p className="text-gray-600 text-2xl max-w-xl">
+                        The molecular results are completed ussually within 24 hours. While the other results take longer.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <div className={classNames("p-4 h-48 bg-gray-50 flex justify-center items-center border border-gray-200 rounded-xl bg-[url('./assets/lablens/content-bg-3.png')] bg-contain bg-right bg-no-repeat",
+                    modIndex === 3 ? "animate-fadeIn" : "hidden")}>
+                    <p className="text-gray-600 text-2xl max-w-xl">
+                        The providers receive a comprehensive molecular report to help them make informed decisions.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <div className={classNames("p-4 h-48 bg-[#2b3cf5] flex justify-center items-center border border-gray-200 rounded-xl bg-[url('./assets/lablens/content-bg-4.png')] bg-contain bg-right bg-no-repeat",
+                    modIndex === 4 ? "animate-fadeIn" : "hidden")}>
+                    <p className="text-white text-2xl max-w-xl">
+                        The microbiology and other traditional results ussually take 48 hours+ to be completed.
+                    </p>
+                </div>
+            </div>
+        </div >
+
+    );
+}
+

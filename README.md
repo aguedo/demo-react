@@ -1,5 +1,9 @@
 # Demo React
 
+This is a repo for demo applications using react.
+
+You can see the running app in [https://react.aguedo.com](https://react.aguedo.com)
+
 ## Available Scripts
 
 In the project directory, you can run:

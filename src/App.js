@@ -1,16 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import TimelineApp from "./Components/Timeline/TimelineApp";
-
-function Test() {
-  return <div>Test</div>;
-}
+import Home from "./Home";
 
 export default function App() {
   return (
     <div>
       <Routes>
         <Route path="/timeline" element={<TimelineApp />} />
-        <Route index element={<Test />} />
+        <Route index element={<Home />} />
       </Routes>
     </div>
   );
